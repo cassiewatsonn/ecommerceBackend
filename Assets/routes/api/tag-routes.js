@@ -8,7 +8,7 @@ router.get('/', async (req, res) => {
   try {
     const tagData = await Tag.findAll({
       // including its associated Products
-      include: [{ model: Product }],
+      include: [{ model: Product, through: ProductTag}],
     });
     res.status(200).json(tagData);
   } catch (err) {
@@ -21,7 +21,7 @@ router.get('/:id', async (req, res) => {
   try {
     const tagData = await Tag.findByPk(req.params.id,{
         // including its associated Product data
-      include: [{ model: Product }],
+      include: [{ model: Product, through: ProductTag }],
     });
     if (!tagData) {
       res.status(404).json({ message: 'No tag was found with that id!' });
@@ -47,10 +47,10 @@ router.post('/', async (req, res) => {
 router.put('/:id', (req, res) => {
   // update a tag's name by its `id` value
     //Calls the update method on the Tag model
-    Category.update(
+    Tag.update(
       {
         // All the fields you can update and the data attached to the request body.
-        id: req.body.id,
+        id: req.params.id,
         tag_name: req.body.tag_name,
       },
       {
@@ -71,7 +71,7 @@ router.put('/:id', (req, res) => {
 
 router.delete('/:id', (req, res) => {
   // delete on tag by its `id` value
-  Category.destroy({
+  Tag.destroy({
     where: {
       id: req.params.id,
     },
