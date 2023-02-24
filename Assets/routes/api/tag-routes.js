@@ -46,7 +46,7 @@ router.post('/', async (req, res) => {
 
 router.put('/:id', (req, res) => {
   // update a tag's name by its `id` value
-    //Calls the update method on the Category model
+    //Calls the update method on the Tag model
     Category.update(
       {
         // All the fields you can update and the data attached to the request body.
@@ -54,7 +54,7 @@ router.put('/:id', (req, res) => {
         tag_name: req.body.tag_name,
       },
       {
-        // Gets a category based on the category id given in the request parameters
+        // Gets a tag based on the tag id given in the request parameters
         where: {
           id: req.params.id,
         },
