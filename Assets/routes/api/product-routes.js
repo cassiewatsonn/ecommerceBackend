@@ -21,7 +21,7 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
   // find a single product by its `id`
   try {
-    const productData = await Tag.findByPk({
+    const productData = await Tag.findByPk(req.params.id,{
         // including its associated Category and Tag data
       include: [
         { model: Category }, { model: Tag }
@@ -39,7 +39,8 @@ router.get('/:id', async (req, res) => {
 });
 
 // create new product
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
+
   /* req.body should look like this...
     {
       product_name: "Basketball",

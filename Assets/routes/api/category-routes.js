@@ -19,7 +19,7 @@ router.get('/', async  (req, res) => {
 router.get('/:id', async (req, res) => {
   // find one category by its `id` value
   try {
-    const categoryData = await Category.findByPk({
+    const categoryData = await Category.findByPk(req.params.id, {
         // including its associated Products
       include: [{ model: Product }],
     });
@@ -34,8 +34,14 @@ router.get('/:id', async (req, res) => {
 
 });
 
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
   // create a new category
+  try {
+    const newCategory = await Category.create(req.body);
+    res.status(200).json(newCategory);
+  } catch (err) {
+    res.status(400).json(err);
+  }
 });
 
 router.put('/:id', (req, res) => {
@@ -44,6 +50,15 @@ router.put('/:id', (req, res) => {
 
 router.delete('/:id', (req, res) => {
   // delete a category by its `id` value
+  Category.destroy({
+    where: {
+      id: req.params.id,
+    },
+  })
+    .then((deletedCategory) => {
+      res.status(200).json(deletedCategory);
+    })
+    .catch((err) => res.json(err));
 });
 
 module.exports = router;
