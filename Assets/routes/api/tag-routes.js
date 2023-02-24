@@ -46,6 +46,27 @@ router.post('/', async (req, res) => {
 
 router.put('/:id', (req, res) => {
   // update a tag's name by its `id` value
+    //Calls the update method on the Category model
+    Category.update(
+      {
+        // All the fields you can update and the data attached to the request body.
+        id: req.body.id,
+        tag_name: req.body.tag_name,
+      },
+      {
+        // Gets a category based on the category id given in the request parameters
+        where: {
+          id: req.params.id,
+        },
+      }
+    )
+      .then((updatedTag) => {
+        res.json(updatedTag);
+      })
+      .catch((err) => {
+        console.log(err);
+        res.json(err);
+      });
 });
 
 router.delete('/:id', (req, res) => {
