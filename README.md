@@ -5,7 +5,7 @@
 
 ## Description
 
-This ecommerceBackend allows an internet retail company to use a backend e-commerce website that uses that latest technologies so they they can continue to compete with other e-commerce companies. 
+This ecommerceBackend allows an internet retail company to use a backend e-commerce website that uses that latest technologies so that they can continue to compete with other e-commerce companies. 
 
 ## Table of Contents 
 
@@ -22,17 +22,19 @@ To install this package, you will gather the files from the [ecommerceBackend Gi
 
 ## Usage 
 
-Here is a video displaying how to application works: [ecommerceBackend Video](https://)
+Here is a video displaying how to application works: [ecommerceBackend Video](https://drive.google.com/file/d/1gU8VBI8_qP_yz_JnXdsWasTFzKdkuSbE/view)
 
-After you have successfully installed the package (if you have not yet installed, please refer to [Installation](#installation)), use 'node server.js' OR 'npm start' to run the application in the terminal. 
-
-/// put in instructions for getting mysql, schema and seeds 
-
-When I add my database name, MySQL username, and MySQL password to an environment variable file, then I am able to connect to a database using Sequelize. When I enter schema and seed commands, then a development database is created and is seeded with test data. When I enter the command to invoke the application, then my server is started and the Sequelize models are synced to the MySQL database. When I open API GET routes in Insomnia for categories, products, or tags, then the data for each of these routes is displayed in a formatted JSON. When I test API POST, PUT, and DELETE routes in Insomnia, then I am able to successfully create, update, and delete data in my database.
-
-
-
+After you have successfully installed the package (if you have not yet installed, please refer to [Installation](#installation)), When I add my database name, MySQL username, and MySQL password to an environment variable file, then I am able to connect to a database using Sequelize. You will do this by inputting 'mysql -u root -p' in the terminal, click enter then enter your password. 
+After you have successfully entered your password, enter schema and seed commands, then a development database is created and is seeded with test data. Do this by inputting 'source db/schema.sql;' into the terminal. Once you have done this it should look like the following picture: 
 ## ![ecommerceBackend](./images/photo1.png)
+
+Once you have that done, input 'quit' to your terminal. Next, input 'npm run seed'; it should now look something like this: 
+## ![ecommerceBackend](./images/photo2.png)
+
+Finally, when you enter the command to invoke the application, then the server is started and the Sequelize models are synced to the MySQL database. Do this by inputting 'npm start' and you should receive a message like this: 
+## ![ecommerceBackend](./images/photo3.png)
+
+Now, go to insomnia. When you open API GET routes in Insomnia for categories, products, or tags, then the data for each of these routes is displayed in a formatted JSON. When you test API POST, PUT, and DELETE routes in Insomnia, then you are able to successfully create, update, and delete data in the database.
 
 
 ## License Description
@@ -71,7 +73,7 @@ N/A
 
 ## Credits 
 
-Thank you to my study partner [Rebecca Lawrence!](https://github.com/rkml14)
+Thank you to my study partner's [Rebecca Lawrence](https://github.com/rkml14), [Mozhdeh Khorashahi](https://github.com/mojsun/E-commerce-Back-End) and my tutor Eric Sayer!
 
 
 ## Questions 
